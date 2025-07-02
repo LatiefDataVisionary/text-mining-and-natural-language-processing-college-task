@@ -1,0 +1,152 @@
+- Install app
+- Copy and replace lservrc file to install dir
+- Run app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://discord.gg/FPNsdfvk
+
+
+
+
+
+
+
+
+
+jadi ini saya ada tugas meningkatkan nilai akurasi pada model decision tree di file ipynb yang saya buat ini, berikut saya lampirkan file ipynb nya.
+nah pada awalnya kan akurasinya sebesar 70%, saya ingin akurasinya naik jauh lebih tinggi kalo bisa diatas 95 persen. Kata dosen saya harus di perbaiki lagi modelnya dengan mengikuti langkah langkah ini
+ASPEK YANG DILAKUKAN UNTUK PERBAIKAN AKURASI
+1.	Preprocesing teks → case folding, tokenizing, stopword removal, stemming
+2.	Tuning parameter decision tree → max depth, min_samples_split, criterion, dll
+3.	Metode validation → cross validation atau split validation
+4.	Ubah representasi fitur feature selection
+5.	Gunakan dataset yang imbang → SMOTE (Synthetic Minority Oversampling Technique)
+6.	Gunakan algoritma klasifikasi lainnya → EXTERNAL DECISION TREE
+
+jadi nanti ada banyak running utama dan banyak hasil akurasi dari keenam langkah perbaikan akurasi dan model diatas ini, dimulai dari preprocessing teks sampai menggunakan algoritma lain, nah kita sudah melewati langkah 1 maka dilanjut ke langkah dua dengan memakai file ipynb yang digunakan pada saat langkah nomor 1, ini berlaku untuk selanjutnya sampai pada bagian menggunakan algoritma lain.
+
+
+nah sekarang kau modifikasi kode bagian yang terkait dengan step 2: Tuning parameter decision tree → max depth, min_samples_split, criterion, dll
+Dari ketiga tuning parameter ini saya akan run 3 kali untuk step 2 ini dimuali perubahan dari max depth sampai criterian.
+Buat dan modifikasilah kode bagian ini secara profesional dan keluarkan seluruh kemampuannmu, saya sangat berharap melalui bagian ini akan jauh meningkatkan akurasi model saya!!
+
+
+
+
+
+ohya sekalian dong buatin teks kayak penjelasan perubahan nya (ini penjelasan perubahan dari kode bagian ini sebelumnya yang kukirim file ipynb itu) itu apa saja dengan format .md yang akan bisa langsung saya tempel di cell code google colab, rencana ini akan saya taruh di bagian bawah langung dari bagain kdoe yang sesuai step ini!!!
+Ingatt bagian step 1 ini saja dulu, kalau bisa nama variabelnya tetap sama soalnya akan saya run bagian selanjutnya!!
+
+
+
+
+
+
+
+Step 5: Gunakan dataset yang imbang → SMOTE (Synthetic Minority Oversampling Technique)
+Ohya coba kamu buatin kode buat feature selection ini karena di proyek ini saya ttidak menggunakn feature selection!! keluarkan seluruh kemampuan mu untuk membuat kode step 5 ini. Kamu buatin cell code yang baru yah untuk step 5 ini, sekalian kamu taruh nya urut pada proses di proyek colab ini!!! sekalian yang kamu buatin penjelasan singkat tentang kode yang kau buat dalam cell text sekalian dalam format .md
+
+
+
+
+Oversampling (SMOTE)
+Perbandingan dataset: Kelas 0: 354; Kelas 1: 354
+
+
+
+
+apakah kode yang kau berikan dapat mempersingkat waktu running jauh dari pada yang sebelumnya? kira kira berapa lama perbandingannya?
+Ya, kode yang saya berikan menggunakan RandomizedSearchCV secara signifikan akan mempersingkat waktu running dibandingkan dengan GridSearchCV sebelumnya, terutama dengan grid parameter yang sebesar param_grid_dt_expanded.
+
+Mengapa Lebih Cepat?
+
+Seperti yang saya jelaskan, GridSearchCV mencoba setiap kombinasi parameter yang mungkin dalam grid. Dengan param_grid_dt_expanded yang Anda miliki, jumlah total kombinasi adalah sekitar 1.4 juta (seperti terlihat dari output "Fitting 5 folds for each of 1411200 candidates"). Setiap kombinasi ini kemudian diuji 5 kali melalui cross-validation. Jadi, total jumlah model fit yang dilakukan oleh GridSearchCV adalah sekitar 1.4 juta * 5 = 7 juta fits.
+
+Sebaliknya, RandomizedSearchCV dengan n_iter=200 (nilai default yang saya setel) hanya akan menguji 200 kombinasi acak dari grid tersebut. Dengan 5-fold cross-validation, total model fit yang dilakukan adalah 200 * 5 = 1000 fits.
+
+Perbandingan Waktu:
+
+Berdasarkan perhitungan di atas, RandomizedSearchCV hanya melakukan sekitar 1000 fits dibandingkan dengan 7 juta fits yang dilakukan GridSearchCV. Ini adalah pengurangan jumlah fits sebesar 99.98%.
+
+Meskipun ada sedikit overhead dalam proses random sampling dan manajemen parallel processing, pengurangan drastis dalam jumlah model yang dilatih akan menghasilkan pengurangan waktu running yang sangat besar.
+
+Estimasi Kasar Perbandingan Waktu:
+
+Jika GridSearchCV membutuhkan waktu 25 menit (atau bahkan lebih lama seperti yang Anda alami) untuk sebagian kecil dari prosesnya, maka RandomizedSearchCV dengan 200 iterasi mungkin hanya akan membutuhkan waktu beberapa detik hingga beberapa menit saja, tergantung pada kecepatan CPU Anda dan kompleksitas setiap fit.
+
+Anda akan melihat penurunan waktu yang sangat drastis. Tentu saja, hasil akurasi yang didapat dari 200 kombinasi acak mungkin sedikit berbeda dengan hasil dari pencarian grid penuh, tetapi seringkali RandomizedSearchCV dapat menemukan hyperparameter yang cukup baik dalam waktu yang jauh lebih singkat. Anda bisa meningkatkan n_iter jika ingin pencarian yang lebih teliti, namun tetap akan jauh lebih cepat daripada GridSearchCV penuh.
+
+
+
+
+
+
+WWW.DOWNLOADLY.IR
+
+
+
+
+
+
+
+
+
+waduhh ternyata kata dosen saya harus memilih salah satu metode validasi. padahal di proyek ini saya menggunakan dua metode validadi yakni split dan cross. Nah bantu saya untuk memilih metode validasi yang sesuai dengan kebutuhan saya terutama yang terbaik dan paling sesuai untuk proyek ini, lalu kau buatin kode validasinya dan sekalian dan kasih penanda nya kayak nomor kayak yang kode feature selection diatas tadi yang dimana menerangkan lokasi dimana saya naruh kode metode validasi yang kau buatkan ini. Kalau bisa kodenya ini sangat bagus dan keluarkan seluruh kemampuanmu dalam membantu saya ini, dan juga kodenya sesuai dengan kebutuhan proyek ini agar tidak terjadi error saat melakukan run pada cell cell kode berikutnya setelah kode metode validasi ini!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WWW.DOWNLOADLY.IR
